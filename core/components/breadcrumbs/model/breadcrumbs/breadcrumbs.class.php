@@ -159,8 +159,8 @@ class BreadCrumbs {
     /**
      * Show the current resource's breadcrumbs.
      *
-     * @access public
-     * @param modResource $resource The resource to load.
+     * @param int $resourceId The resource ID to load.
+     * @return void
      */
     public function showCurrentPage($resourceId) {
         /* show current page, as link or not */
@@ -195,9 +195,9 @@ class BreadCrumbs {
     /**
      * Get the mediary crumbs for an object.
      *
-     * @access public
      * @param integer $resourceId The ID of the resource to pull from.
      * @param integer &$count
+     * @return boolean
      */
     public function getMiddleCrumbs($resourceId,&$count) {
         /* insert '...' if maximum number of crumbs exceded */
@@ -232,6 +232,7 @@ class BreadCrumbs {
         if ($parent->get('parent') != 0) {
             $this->getMiddleCrumbs($parent->get('parent'),$count);
         }
+        return true;
     }
 
     /**
@@ -239,7 +240,7 @@ class BreadCrumbs {
      *
      * @access public
      * @param integer $resourceId The ID of the resource to pull.
-     *
+     * @return modResource The resource object
      */
     public function pullResource($resourceId){
         $wa = array(
