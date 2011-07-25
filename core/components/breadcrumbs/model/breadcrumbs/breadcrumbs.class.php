@@ -142,15 +142,15 @@ class BreadCrumbs {
              * @var string $max_delimiter
              */
             'maxDelimiter' => '...',
-            'bcTplCrumbCurrent' => '<span class="B_currentCrumb">[[+text]]</span>',
-            'bcTplCrumbCurrentLink' => '<a class="B_currentCrumb" href="[[~[[+resource]]]]" title="[[+description]]">[[+text]]</a>',
-            'bcTplCrumbFirst' => '<span class="B_firstCrumb">[[+text]]</span>',
-            'bcTplCrumbHome' => '<a class="B_homeCrumb" href="[[~[[++site_start]]]]" title="[[+description]]">[[+text]]</a>',
-            'bcTplCrumbLast' => '<span class="B_lastCrumb">[[+text]]</span>',
-            'bcTplCrumbMax' => '<span class="B_hideCrumb">[[+text]]</span>',
-            'bcTplCrumbLink' => '<a class="B_crumb" href="[[~[[+resource]]]]" title="[[+description]]">[[+text]]</a>',
-            'bcTplCrumbOuter' => '<span class="B_crumbBox">[[+text]]</span>',
-            'bcTplCrumb' => '<span class="B_crumb">[[+text]]</span>',
+            'bcTplCrumbCurrent' => '<li itemscope="itemscope" class="B_currentCrumb" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+            'bcTplCrumbCurrentLink' => '<a class="B_currentCrumb" itemprop="url" rel="[[+description]]" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
+            'bcTplCrumbFirst' => '<li class="B_firstCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+            'bcTplCrumbHome' => '<a class="B_homeCrumb" itemprop="url" rel="[[+description]]" href="[[~[[++site_start]]]]"><span itemprop="title">[[+text]]</span></a>',
+            'bcTplCrumbLast' => '<li class="B_lastCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+            'bcTplCrumbMax' => '<li class="B_hideCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+            'bcTplCrumbLink' => '<a class="B_crumb" itemprop="url" rel="[[+description]]" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
+            'bcTplCrumbOuter' => '<ul class="B_crumbBox">[[+text]]</ul>',
+            'bcTplCrumb' => '<li itemscope="itemscope" class="B_crumb" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
         ),$config);
         $this->_crumbs = array();
         $this->_tpls = array();

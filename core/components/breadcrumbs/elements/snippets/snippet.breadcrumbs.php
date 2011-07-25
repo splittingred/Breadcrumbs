@@ -30,6 +30,7 @@
  * @editor grad
  * @editor Shaun McCormick <shaun@collabpad.com>
  * @editor Shawn Wilkerson <shawn@shawnwilkerson.com>
+ * @editor Wieger Sloot, Sterc.nl <wieger@sterc.nl>
  * @tester Bob Ray
  * @package breadcrumbs
  *
