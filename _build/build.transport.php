@@ -65,11 +65,12 @@ require_once $sources['build'] . 'includes/functions.php';
 $modx= new modX();
 $modx->initialize('mgr');
 $modx->setLogLevel(xPDO::LOG_LEVEL_INFO);
-if (!XPDO_CLI_MODE) { echo '<pre>'; }
-$modx->setLogTarget('ECHO');
+$modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
+echo 'Packing '.PKG_NAME_LOWER.'-'.PKG_VERSION.'-'.PKG_RELEASE.'<pre>'; flush();
 
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
+$builder->directory = dirname(dirname(__FILE__)).'/_packages/';
 $builder->createPackage(PKG_NAME_LOWER,PKG_VERSION,PKG_RELEASE);
 $builder->registerNamespace(PKG_NAME_LOWER,false,true,'{core_path}components/'.PKG_NAME_LOWER.'/');
 
@@ -77,13 +78,14 @@ $builder->registerNamespace(PKG_NAME_LOWER,false,true,'{core_path}components/'.P
 $category= $modx->newObject('modCategory');
 $category->set('id',1);
 $category->set('category',PKG_NAME);
+$modx->log(modX::LOG_LEVEL_INFO,'Packaged in category.'); flush();
 
 /* add snippets */
 $snippets = include_once $sources['data'].'transport.snippets.php';
 if (is_array($snippets)) {
     $category->addMany($snippets);
-    $modx->log(xPDO::LOG_LEVEL_INFO,'Packaged in '.count($snippets).' Snippets.');
-} else { $modx->log(xPDO::LOG_LEVEL_ERROR,'Adding snippets failed.'); }
+    $modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($snippets).' snippets.'); flush();
+} else { $modx->log(modX::LOG_LEVEL_FATAL,'Adding snippets failed.'); }
 
 /* create category vehicle */
 $attr = array(
@@ -99,6 +101,7 @@ $attr = array(
         ),
     )
 );
+$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in vehicle...'); flush();
 $vehicle = $builder->createVehicle($category,$attr);
 $vehicle->resolve('file',array(
     'source' => $sources['source_core'],
@@ -111,6 +114,7 @@ $vehicle->resolve('file',array(
 ));*/
 $builder->putVehicle($vehicle);
 
+/* now pack in the license file, readme and setup options */
 $builder->setPackageAttributes(array(
     'license' => file_get_contents($sources['docs'] . 'license.txt'),
     'readme' => file_get_contents($sources['docs'] . 'readme.txt'),
@@ -118,8 +122,11 @@ $builder->setPackageAttributes(array(
 ));
 $modx->log(modX::LOG_LEVEL_INFO,'Packaged in package attributes.'); flush();
 
+/* zip up package */
+$modx->log(modX::LOG_LEVEL_INFO,'Packing...'); flush();
 $builder->pack();
 
+/* calculate build time */
 $mtime= microtime();
 $mtime= explode(" ", $mtime);
 $mtime= $mtime[1] + $mtime[0];
