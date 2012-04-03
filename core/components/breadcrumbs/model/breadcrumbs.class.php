@@ -78,9 +78,7 @@ class BreadCrumbs {
                     'text' => $titleToShow,
                 ));
             } else {
-                $this->_crumbs[] = $this->getChunk('bcTplCrumbCurrent',array(
-                    'text' => $titleToShow,
-                ));
+                $this->_crumbs[] = $titleToShow;
             }
         }
     }
