@@ -175,20 +175,22 @@ class BreadCrumbs {
         $o = '';
         $idx = 0;
         $crumbCount = count($this->_crumbs)-1;
+        $oCrumbSeparator = '';
+        if (!empty($this->config['crumbSeparator'])) {
+            $oCrumbSeparator = $this->getChunk('bcTplCrumbSeparator',array('separator' => $this->config['crumbSeparator']));
+        }
         foreach ($this->_crumbs as $crumb) {
             if ($idx == 0) {
                 $o .= $this->getChunk('bcTplCrumbFirst',array(
                     'text' => $crumb,
                 ))."\n";
             } else if ($idx == $crumbCount) {
-                $o .= ' '.$this->config['crumbSeparator'].' ';
                 $o .= $this->getChunk('bcTplCrumbLast',array(
-                    'text' => $crumb,
+                    'text' => $oCrumbSeparator.$crumb,
                 ))."\n";
             } else {
-                $o .= ' '.$this->config['crumbSeparator'].' ';
                 $o .= $this->getChunk('bcTplCrumb',array(
-                    'text' => $crumb,
+                    'text' => $oCrumbSeparator.$crumb,
                 ))."\n";
             }
             $idx++;

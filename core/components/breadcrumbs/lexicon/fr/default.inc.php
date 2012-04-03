@@ -29,3 +29,4 @@
  * @language fr
  */
 $_lang['breadcrumbs'] = 'BreadCrumbs';
+$_lang['breadcrumbs.error.loadingclass'] = 'Erreur lors du chargement de la classe BreadCrumbs à [[+path]].';

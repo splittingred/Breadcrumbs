@@ -136,14 +136,15 @@ return array(
      */
     'maxDelimiter' => '...',
     'bcTplCrumbCurrent' => '<li itemscope="itemscope" class="B_currentCrumb" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-    'bcTplCrumbCurrentLink' => '<a class="B_currentCrumb" itemprop="url" rel="[[+description]]" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
+    'bcTplCrumbCurrentLink' => '<a class="B_currentCrumb" itemprop="url" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
     'bcTplCrumbFirst' => '<li class="B_firstCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-    'bcTplCrumbHome' => '<a class="B_homeCrumb" itemprop="url" rel="[[+description]]" href="[[~[[++site_start]]]]"><span itemprop="title">[[+text]]</span></a>',
+    'bcTplCrumbHome' => '<a class="B_homeCrumb" itemprop="url" href="[[~[[++site_start]]]]"><span itemprop="title">[[+text]]</span></a>',
     'bcTplCrumbLast' => '<li class="B_lastCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
     'bcTplCrumbMax' => '<li class="B_hideCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-    'bcTplCrumbLink' => '<a class="B_crumb" itemprop="url" rel="[[+description]]" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
+    'bcTplCrumbLink' => '<a class="B_crumb" itemprop="url" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
     'bcTplCrumbOuter' => '<ul class="B_crumbBox">[[+text]]</ul>',
     'bcTplCrumb' => '<li itemscope="itemscope" class="B_crumb" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+    'bcTplCrumbSeparator' => '<span class="divider">[[+separator]]</span>'
 );
 
 ?>

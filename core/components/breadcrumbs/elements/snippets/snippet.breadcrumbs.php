@@ -31,6 +31,7 @@
  * @editor Shaun McCormick <shaun@collabpad.com>
  * @editor Shawn Wilkerson <shawn@shawnwilkerson.com>
  * @editor Wieger Sloot, Sterc.nl <wieger@sterc.nl>
+ * @editor Jerome Perrin <hello@jeromeperrin.com>
  * @tester Bob Ray
  * @package breadcrumbs
  *
@@ -50,6 +51,12 @@
  * hide)
  * .B_homeCrumb Class given to the home crumb
  */
-require_once $modx->getOption('breadcrumbs.core_path',null,$modx->getOption('core_path').'components/breadcrumbs/').'model/breadcrumbs/breadcrumbs.class.php';
-$bc = new BreadCrumbs($modx,$scriptProperties);
-return $bc->run();
+$path = $modx->getOption('breadcrumbs.core_path',null,$modx->getOption('core_path').'components/breadcrumbs/');
+
+$p = include $path.'elements/snippets/snippet.breadcrumbs.properties.php';
+$p = array_merge($p,$scriptProperties);
+
+$breadcrumbs = $modx->getService('breadcrumbs','BreadCrumbs',$path.'model/',$p);
+if (!($breadcrumbs instanceof BreadCrumbs)) return $modx->lexicon('breadcrumbs.error.loadingclass',array('path' => $path.'model/'));
+
+return $breadcrumbs->run();

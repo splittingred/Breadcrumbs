@@ -50,3 +50,5 @@ $_lang['breadcrumbs.prop_desc.bcTplCrumbMax'] = '';
 $_lang['breadcrumbs.prop_desc.bcTplCrumbLink'] = '';
 $_lang['breadcrumbs.prop_desc.bcTplCrumbOuter'] = '';
 $_lang['breadcrumbs.prop_desc.bcTplCrumb'] = '';
+$_lang['breadcrumbs.prop_desc.bcTplCrumbSeparator'] = '';
+
