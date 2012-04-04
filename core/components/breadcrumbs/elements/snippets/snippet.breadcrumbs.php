@@ -42,14 +42,9 @@
  * @see breadcrumbs.class.php for config settings
  *
  * Included classes
- * .B_crumbBox Span that surrounds all crumb output
- * .B_hideCrumb Span surrounding the "..." if there are more crumbs than will be shown
- * .B_currentCrumb Span or A tag surrounding the current crumb
- * .B_firstCrumb Span that always surrounds the first crumb, whether it is "home" or not
- * .B_lastCrumb Span surrounding last crumb, whether it is the current page or not .
- * .B_crumb Class given to each A tag surrounding the intermediate crumbs (not home, or
- * hide)
- * .B_homeCrumb Class given to the home crumb
+ * .breadcrumb ul tag that surrounds all crumb output
+ * .active a tag surrounding the current crumb
+ * .maxDelimiter li tag surrounding the "..." if there are more crumbs than will be shown
  */
 $path = $modx->getOption('breadcrumbs.core_path',null,$modx->getOption('core_path').'components/breadcrumbs/');
 

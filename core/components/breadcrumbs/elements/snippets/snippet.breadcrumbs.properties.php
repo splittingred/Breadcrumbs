@@ -135,15 +135,15 @@ return array(
      * @var string $max_delimiter
      */
     'maxDelimiter' => '...',
-    'bcTplCrumbCurrent' => '<li itemscope="itemscope" class="B_currentCrumb" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-    'bcTplCrumbCurrentLink' => '<a class="B_currentCrumb" itemprop="url" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
-    'bcTplCrumbFirst' => '<li class="B_firstCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-    'bcTplCrumbHome' => '<a class="B_homeCrumb" itemprop="url" href="[[~[[++site_start]]]]"><span itemprop="title">[[+text]]</span></a>',
-    'bcTplCrumbLast' => '<li class="B_lastCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-    'bcTplCrumbMax' => '<li class="B_hideCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-    'bcTplCrumbLink' => '<a class="B_crumb" itemprop="url" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
-    'bcTplCrumbOuter' => '<ul class="B_crumbBox">[[+text]]</ul>',
-    'bcTplCrumb' => '<li itemscope="itemscope" class="B_crumb" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+    'bcTplCrumbCurrent' => '<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+    'bcTplCrumbCurrentLink' => '<a class="active" itemprop="url" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
+    'bcTplCrumbFirst' => '<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+    'bcTplCrumbHome' => '<a itemprop="url" href="[[~[[++site_start]]]]"><span itemprop="title">[[+text]]</span></a>',
+    'bcTplCrumbLast' => '<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+    'bcTplCrumbMax' => '<li class="maxDelimiter" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+    'bcTplCrumbLink' => '<a itemprop="url" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
+    'bcTplCrumbOuter' => '<ul class="breadcrumb">[[+text]]</ul>',
+    'bcTplCrumb' => '<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
     'bcTplCrumbSeparator' => '<span class="divider">[[+separator]]</span>'
 );
 
