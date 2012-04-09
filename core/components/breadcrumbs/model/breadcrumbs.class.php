@@ -72,14 +72,15 @@ class BreadCrumbs {
                     ? $resource->get($this->config['descField'])
                     : $resource->get('pagetitle');
 
-                $this->_crumbs[] = $this->getChunk('bcTplCrumbCurrentLink',array(
+                $crumb = $this->getChunk('bcTplCrumbCurrentLink',array(
                     'resource' => $this->modx->resource->get('id'),
                     'description' => $descriptionToUse,
                     'text' => $titleToShow,
                 ));
             } else {
-                $this->_crumbs[] = $titleToShow;
+                $crumb = $titleToShow;
             }
+            $this->_crumbs[] = $this->getChunk('bcTplCrumbCurrent',array('text' => $crumb));
         }
     }
 
@@ -110,11 +111,12 @@ class BreadCrumbs {
                     $descriptionToUse = $parent->get($this->config['descField'])
                         ? $parent->get($this->config['descField'])
                         : $parent->get('pagetitle');
-                    $this->_crumbs[] = $this->getChunk('bcTplCrumbLink',array(
+                    $crumb = $this->getChunk('bcTplCrumbLink',array(
                         'resource' => $parent->get('id'),
                         'description' => $descriptionToUse,
                         'text' => $titleToShow,
                     ));
+                    $this->_crumbs[] = $this->getChunk('bcTplCrumb',array('text' => $crumb));
                 }
             }
         } /* end if */
@@ -162,37 +164,27 @@ class BreadCrumbs {
 
         /* add home link if desired */
         if ($this->config['showHomeCrumb'] && ($resource->get('id') != $this->modx->config['site_start'])) {
-            $this->_crumbs[] = $this->getChunk('bcTplCrumbHome',array(
+            $crumb = $this->getChunk('bcTplCrumbHome',array(
                 'description' => $this->config['homeCrumbDescription'],
                 'text' => $this->config['homeCrumbTitle'],
             ));
+            $this->_crumbs[] = $this->getChunk('bcTplCrumb',array('text' => $crumb));
         }
 
         $this->_crumbs = array_reverse($this->_crumbs);
 
-        $o = '';
-        $idx = 0;
-        $crumbCount = count($this->_crumbs)-1;
-        $oCrumbSeparator = '';
-        if (!empty($this->config['crumbSeparator'])) {
-            $oCrumbSeparator = $this->getChunk('bcTplCrumbSeparator',array('separator' => $this->config['crumbSeparator']));
-        }
-        foreach ($this->_crumbs as $crumb) {
-            if ($idx == 0) {
-                $o .= $this->getChunk('bcTplCrumbFirst',array(
-                    'text' => $crumb,
-                ))."\n";
-            } else if ($idx == $crumbCount) {
-                $o .= $this->getChunk('bcTplCrumbLast',array(
-                    'text' => $oCrumbSeparator.$crumb,
-                ))."\n";
-            } else {
-                $o .= $this->getChunk('bcTplCrumb',array(
-                    'text' => $oCrumbSeparator.$crumb,
-                ))."\n";
+        /* add crumb separator to each crumb except the first one */
+        $crumbsCount = count($this->_crumbs);
+        if ($crumbsCount > 1 && !empty($this->config['crumbSeparator'])) {
+            $crumbSeparator = $this->getChunk('bcTplCrumbSeparator', array('separator' => $this->config['crumbSeparator']));
+            for ($i=1; $i < $crumbsCount; $i++) {
+                $this->_crumbs[$i] = preg_replace('/>/', '$0'.$crumbSeparator, $this->_crumbs[$i], $limit = 1);
             }
-            $idx++;
         }
+
+        /* assemble all crumbs */
+        $o = implode("", $this->_crumbs);
+
         return $this->getChunk('bcTplCrumbOuter',array('text' => $o));
     }
 
