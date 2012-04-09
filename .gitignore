@@ -1,4 +1,5 @@
 _build/build.config.php
+_packages
 config.core.php
 nbproject
 .idea
