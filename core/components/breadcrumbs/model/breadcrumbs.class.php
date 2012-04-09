@@ -80,7 +80,7 @@ class BreadCrumbs {
             } else {
                 $crumb = $titleToShow;
             }
-            $this->_crumbs[] = $this->getChunk('bcTplCrumbCurrent',array('text' => $crumb));
+            $this->_crumbs[] = $this->getChunk('bcTplCrumbCurrent',array('text' => $crumb, 'class' => $this->config['currentCrumbClass']));
         }
     }
 
@@ -185,7 +185,7 @@ class BreadCrumbs {
         /* assemble all crumbs */
         $o = implode("", $this->_crumbs);
 
-        return $this->getChunk('bcTplCrumbOuter',array('text' => $o));
+        return $this->getChunk('bcTplCrumbOuter',array('text' => $o, 'class' => $this->config['outerClass']));
     }
 
     /**

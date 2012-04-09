@@ -129,18 +129,30 @@ return array(
      */
     'descField' => 'description',
     /**
+     * The class of the outer container
+     *
+     * @var string $outerClass
+     */
+    'outerClass' => 'breadcrumb',
+    /**
+     * The class of the current crumb
+     *
+     * @var string $currentCrumbClass
+     */
+    'currentCrumbClass' => 'active',
+    /**
      * The string that will show if the maximum number of breadcrumbs
      * has been shown.
      *
      * @var string $max_delimiter
      */
     'maxDelimiter' => '...',
-    'bcTplCrumbCurrent' => '<li class="active" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+    'bcTplCrumbCurrent' => '<li class="[[+class]]" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
     'bcTplCrumbCurrentLink' => '<a itemprop="url" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
     'bcTplCrumbHome' => '<a itemprop="url" href="[[~[[++site_start]]]]"><span itemprop="title">[[+text]]</span></a>',
     'bcTplCrumbMax' => '<li class="maxDelimiter" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
     'bcTplCrumbLink' => '<a itemprop="url" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
-    'bcTplCrumbOuter' => '<ul class="breadcrumb">[[+text]]</ul>',
+    'bcTplCrumbOuter' => '<ul class="[[+class]]">[[+text]]</ul>',
     'bcTplCrumb' => '<li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
     'bcTplCrumbSeparator' => '<span class="divider">[[+separator]]</span>'
 );
