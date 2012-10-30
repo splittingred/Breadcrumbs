@@ -105,7 +105,7 @@ class BreadCrumbs {
              *
              * @var string $crumbSeparator
              */
-            'crumbSeparator' => '&raquo;',
+            'crumbSeparator' => '<li>&raquo;</li>',
             /**
              * Just in case you want to have a home link, but want to call it
              * something else.
