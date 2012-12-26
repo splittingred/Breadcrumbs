@@ -180,7 +180,7 @@ class BreadCrumbs {
                     : $resource->get('pagetitle');
 
                 $this->_crumbs[] = $this->getChunk('bcTplCrumbCurrentLink',array(
-                    'resource' => $this->modx->resource->get('id'),
+                    'resource' => $resource->get('id'),
                     'description' => $descriptionToUse,
                     'text' => $titleToShow,
                 ));
