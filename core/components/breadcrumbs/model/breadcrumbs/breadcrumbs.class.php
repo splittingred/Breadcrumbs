@@ -43,6 +43,12 @@ class BreadCrumbs {
 
         $this->config = array_merge(array(
             /**
+             * Document ID for which to generate Crumbs
+             *
+             * @var integer $docId
+             */
+            'docId' => $modx->resource->get('id'),
+            /**
              * Max number of elements to have in a path. 100 is an arbitrary
              * high number. If you make it smaller, like say 2, but you are 5
              * levels deep, it will appear as: Home > ... > Level 4 > Level 5 It
@@ -262,7 +268,10 @@ class BreadCrumbs {
     public function run() {
         /* get current resource parent info */
 
-        $resource =& $this->modx->resource;
+    	$resource = $this->config['docId'] == $this->modx->resource->get('id')
+                ? $this->modx->resource;
+			    : $this->pullResource($this->config['docId']);
+        
         $this->showCurrentPage($resource->get('id'));
 
         /* assemble intermediate crumbs */
