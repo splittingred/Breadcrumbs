@@ -246,7 +246,7 @@ class BreadCrumbs {
         $wa = array(
             'id' => $resourceId,
         );
-        if (!$this->config['pathThruUnPub']) {
+        if (!$this->config['pathThruUnPub'] && $resourceId != $this->modx->resource->get('id')) {
             $wa['published'] = true;
             $wa['deleted'] = false;
         }
