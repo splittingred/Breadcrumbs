@@ -142,15 +142,15 @@ class BreadCrumbs {
              * @var string $max_delimiter
              */
             'maxDelimiter' => '...',
-            'bcTplCrumbCurrent' => '<li itemscope="itemscope" class="B_currentCrumb" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-            'bcTplCrumbCurrentLink' => '<a class="B_currentCrumb" itemprop="url" rel="[[+description]]" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
-            'bcTplCrumbFirst' => '<li class="B_firstCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-            'bcTplCrumbHome' => '<a class="B_homeCrumb" itemprop="url" rel="[[+description]]" href="[[~[[++site_start]]]]"><span itemprop="title">[[+text]]</span></a>',
-            'bcTplCrumbLast' => '<li class="B_lastCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-            'bcTplCrumbMax' => '<li class="B_hideCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
-            'bcTplCrumbLink' => '<a class="B_crumb" itemprop="url" rel="[[+description]]" href="[[~[[+resource]]]]"><span itemprop="title">[[+text]]</span></a>',
-            'bcTplCrumbOuter' => '<ul class="B_crumbBox">[[+text]]</ul>',
-            'bcTplCrumb' => '<li itemscope="itemscope" class="B_crumb" itemtype="http://data-vocabulary.org/Breadcrumb">[[+text]]</li>',
+            'bcTplCrumbCurrent' => '<li itemprop="itemListElement" itemtype="http://schema.org/ListItem" class="B_currentCrumb">[[+text]]</li>',
+            'bcTplCrumbCurrentLink' => '<a class="B_currentCrumb" itemprop="item" rel="[[+description]]" href="[[~[[+resource]]]]"><span itemprop="name">[[+text]]</span></a>',
+            'bcTplCrumbFirst' => '<li class="B_firstCrumb" itemprop="itemListElement" itemtype="http://schema.org/ListItem">[[+text]]</li>',
+            'bcTplCrumbHome' => '<a class="B_homeCrumb" itemprop="item" rel="[[+description]]" href="[[~[[++site_start]]]]"><span itemprop="name">[[+text]]</span></a>',
+            'bcTplCrumbLast' => '<li class="B_lastCrumb" itemprop="itemListElement" itemtype="http://schema.org/ListItem">[[+text]]</li>',
+            'bcTplCrumbMax' => '<li class="B_hideCrumb" itemprop="itemListElement" itemtype="http://schema.org/ListItem">[[+text]]</li>',
+            'bcTplCrumbLink' => '<a class="B_crumb" itemprop="item" rel="[[+description]]" href="[[~[[+resource]]]]"><span itemprop="name">[[+text]]</span></a>',
+            'bcTplCrumbOuter' => '<ul itemscope itemtype="http://schema.org/Breadcrumblist" class="B_crumbBox">[[+text]]</ul>',
+            'bcTplCrumb' => '<li itemscope="itemscope" class="B_crumb" itemprop="itemListElement" itemtype="http://schema.org/ListItem">[[+text]]</li>',
         ),$config);
         $this->_crumbs = array();
         $this->_tpls = array();
